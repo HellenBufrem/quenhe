@@ -15,16 +15,28 @@
 * **BaaS & Auth:** Supabase-js.
 * **Estilização & UI:** Tailwind CSS, Spartan UI (HLM), Lucide Angular.
 
-## 🗄️ 3. Arquitetura de Dados
+## 🎨 3. Design Tokens (Tailwind CSS)
 
-### 📖 3.1. Glossário Técnico (Mapeamento)
+Definição das cores e tipografia principais utilizadas no protótipo de alta fidelidade:
+
+* **Cores Principais:**
+  * `primary` (Vermelho - Botões e Destaques): `#E02424`
+  * `secondary` (Verde - Ações de Sucesso/Entrar): `#059669`
+  * `background` (Fundo do App): `#F9FAFB`
+  * `text-dark` (Textos principais): `#111827`
+* **Tipografia:**
+  * Família de Fonte: `Inter`, sans-serif
+
+## 🗄️ 4. Arquitetura de Dados
+
+### 📖 4.1. Glossário Técnico (Mapeamento)
 | Termo PRD (PT-BR) | Entidade Técnica (EN) | Atributos Principais |
 | :--- | :--- | :--- |
 | Grupo | `group` | `id`, `name`, `owner_id`, `status` |
 | Participante | `participant` | `id`, `group_id`, `name` |
 | Sorteio | `draw` | `id`, `group_id`, `giver_id`, `receiver_id` |
 
-### 📊 3.2. Diagrama ER (Mermaid)
+### 📊 4.2. Diagrama ER (Mermaid)
 ```mermaid
 erDiagram
     GROUP ||--o{ PARTICIPANT : contains
@@ -49,15 +61,3 @@ erDiagram
         uuid giver_id FK
         uuid receiver_id FK
     }
-
-## 🎨 4. Design Tokens (Tailwind CSS)
-
-Definição das cores e tipografia principais utilizadas no protótipo de alta fidelidade:
-
-* **Cores Principais:**
-  * `primary` (Vermelho - Botões e Destaques): `#E02424`
-  * `secondary` (Verde - Ações de Sucesso/Entrar): `#059669`
-  * `background` (Fundo do App): `#F9FAFB`
-  * `text-dark` (Textos principais): `#111827`
-* **Tipografia:**
-  * Família de Fonte: `Inter`, sans-serif
