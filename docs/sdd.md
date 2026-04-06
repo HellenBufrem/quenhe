@@ -49,3 +49,15 @@ erDiagram
         uuid giver_id FK
         uuid receiver_id FK
     }
+
+## 🎨 4. Design Tokens (Tailwind CSS)
+
+Definição das cores e tipografia principais utilizadas no protótipo de alta fidelidade:
+
+* **Cores Principais:**
+  * `primary` (Vermelho - Botões e Destaques): `#E02424`
+  * `secondary` (Verde - Ações de Sucesso/Entrar): `#059669`
+  * `background` (Fundo do App): `#F9FAFB`
+  * `text-dark` (Textos principais): `#111827`
+* **Tipografia:**
+  * Família de Fonte: `Inter`, sans-serif
