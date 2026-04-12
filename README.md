@@ -2,6 +2,10 @@
 
 Um aplicativo web moderno para organização de sorteios de Amigo Secreto de forma elegante, rápida e segura. Projeto desenvolvido com foco em componentização e regras de negócio de autenticação.
 
+## Autores
+* Eduardo Wosiak
+* Hellen Bufrem
+
 ## 🚀 Tecnologias Utilizadas
 * **Frontend:** Angular 21+ (Standalone / Signals)
 * **Backend/Auth:** Supabase
