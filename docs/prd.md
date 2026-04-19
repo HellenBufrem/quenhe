@@ -1,6 +1,6 @@
 # 📄 Product Requirements Document (PRD)
 
-**Projeto:** Amigo Secreto  
+**Projeto:** Quenhé - Amigo Secreto  
 **Versão:** 1.0.0  
 **Status:** 🟡 Em Definição (MVP)
 

@@ -1,5 +1,5 @@
 {
-    "name": "nome-do-seu-projeto-monorepo",
+    "name": "Quenhé - Amigo Secreto",
     "version": "1.0.0",
     "description": "Monorepo do projeto da disciplina",
     "private": true,
@@ -10,6 +10,6 @@
       "dev:web": "npm run start -w apps/web"
     },
     "keywords": ["angular", "supabase", "monorepo"],
-    "author": "Hellen Bufrem",
+    "author": "Hellen Bufrem e Eduardo Wosiak",
     "license": "UNLICENSED"
   }

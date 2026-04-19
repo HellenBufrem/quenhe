@@ -1,6 +1,6 @@
 # 🛠️ Software Design Document (SDD)
 
-**Projeto:** Amigo Secreto
+**Projeto:** Quenhé - Amigo Secreto
 **Versão:** 1.0.0  
 **Status:** ⚪ Aguardando Geração de Especificações.
 
@@ -61,3 +61,12 @@ erDiagram
         uuid giver_id FK
         uuid receiver_id FK
     }
+
+## 📂 5. Estrutura de Diretórios (Monorepo)
+
+### 5.1. Scaffolding Base
+O projeto utiliza a arquitetura de Monorepo com NPM Workspaces para manter o contexto unificado.
+* `apps/` - Diretório raiz dos subprojetos.
+  * `apps/api/` - Reservado para futuro backend/serviços isolados.
+  * `apps/web/` - Aplicação Frontend principal (Angular).
+* `docs/` - Documentação de requisitos e arquitetura.
