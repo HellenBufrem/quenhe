@@ -1,4 +1,4 @@
-# 🎁 Amigo Secreto
+# 🎁 Quenhé - Amigo Secreto
 
 Um aplicativo web moderno para organização de sorteios de Amigo Secreto de forma elegante, rápida e segura. Projeto desenvolvido com foco em componentização e regras de negócio de autenticação.
 
