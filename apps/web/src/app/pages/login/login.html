@@ -1,0 +1,54 @@
+<div class="bg-background text-foreground min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+
+  <main class="w-full max-w-md z-10">
+    <div class="bg-card rounded-[1.5rem_0.75rem_1.5rem_0.75rem] border p-8 md:p-12 shadow-lg flex flex-col items-center text-center">
+      <div class="mb-8 relative">
+        <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-primary-foreground shadow-lg rotate-3">
+          <span class="text-3xl">🎁</span>
+        </div>
+      </div>
+
+      <header class="mb-10">
+        <h1 class="text-3xl font-extrabold tracking-tight text-foreground mb-2">Amigo Secreto</h1>
+        <p class="text-muted-foreground text-sm font-medium tracking-wide">A magia da troca de presentes começa aqui.</p>
+      </header>
+
+      <form class="w-full space-y-6">
+        <div class="text-left">
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2 ml-1">E-mail</label>
+          <input
+            class="w-full bg-secondary/5 border border-input rounded-lg px-4 py-3.5 outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+            placeholder="seu@email.com" type="email"
+          />
+        </div>
+
+        <div class="text-left">
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-muted-foreground mb-2 ml-1">Senha</label>
+          <input
+            class="w-full bg-secondary/5 border border-input rounded-lg px-4 py-3.5 outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+            placeholder="••••••••" type="password"
+          />
+        </div>
+
+        <button hlmBtn variant="default" class="w-full py-6 text-lg font-bold shadow-xl active:scale-95 transition-all">
+          Entrar
+        </button>
+      </form>
+
+      <div class="mt-10 pt-8 w-full border-t border-border">
+        <p class="text-sm text-muted-foreground mb-2">Ainda não tem uma conta?</p>
+        <a class="text-secondary font-bold hover:underline cursor-pointer">
+          Cadastre-se agora
+        </a>
+      </div>
+    </div>
+
+    <footer class="mt-8 text-center">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-40">
+        Quenhé • O Anfitrião Moderno
+      </p>
+    </footer>
+  </main>
+</div>

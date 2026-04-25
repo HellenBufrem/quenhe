@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cores de Fundo e Texto padrão */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* 🎨 DESIGN TOKEN 1: Cor Primária (Vermelho do Quenhé) */
+    --primary: 0 76% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    /* 🎨 DESIGN TOKEN 2: Cor Secundária (Verde do Quenhé) */
+    --secondary: 161 94% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Cores de borda e contorno estruturais do Spartan */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    /* 🎨 DESIGN TOKEN 3: Shape (Bordas de pílula) */
+    --radius: 2rem;
+  }
+}

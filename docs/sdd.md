@@ -70,3 +70,7 @@ O projeto utiliza a arquitetura de Monorepo com NPM Workspaces para manter o con
   * `apps/api/` - Reservado para futuro backend/serviços isolados.
   * `apps/web/` - Aplicação Frontend principal (Angular).
 * `docs/` - Documentação de requisitos e arquitetura.
+
+## 🎨 6. Escolha do Sistema de Interface
+**Opção Escolhida:** Spartan NG (HLM).
+**Justificativa:** Optamos pelo ecossistema Spartan NG pois ele nos dá controle total sobre a acessibilidade (A11y) e o código-fonte dos componentes. Isso permite uma customização profunda dos nossos Design Tokens usando a base do Tailwind, sem ficarmos presos a estilos engessados, garantindo uma interface escalável e profissional para o "Quenhé".
