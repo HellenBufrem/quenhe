@@ -61,6 +61,7 @@ erDiagram
         uuid giver_id FK
         uuid receiver_id FK
     }
+```
 
 ## 📂 5. Estrutura de Diretórios (Monorepo)
 
