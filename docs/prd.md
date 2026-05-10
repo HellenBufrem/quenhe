@@ -37,4 +37,4 @@ Aplicação web para gerenciar sorteios de Amigo Secreto de forma automatizada e
 * Mobile-first e interface acessível.
 
 ## 🛠️ 8. Tech Stack Principal (Diretrizes)
-* Angular 21+ (Standalone / Signals) e Supabase.
+* Angular 21+ (Standalone / Signals), Tailwind v4 e Supabase.

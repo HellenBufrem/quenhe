@@ -13,7 +13,7 @@
 ## 📦 2. Stack Tecnológica e Bibliotecas
 * **Core:** Angular 21+ (Standalone / Signals).
 * **BaaS & Auth:** Supabase-js.
-* **Estilização & UI:** Tailwind CSS, Spartan UI (HLM), Lucide Angular.
+* **Estilização & UI:** Tailwind CSS v4, Spartan UI (HLM), Lucide Angular.
 
 ## 🎨 3. Design Tokens (Tailwind CSS)
 
