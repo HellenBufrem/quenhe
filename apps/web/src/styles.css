@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.js";
+
+@import "tailwindcss";
 
 @layer base {
   :root {
@@ -15,6 +15,10 @@
     /* 🎨 DESIGN TOKEN 2: Cor Secundária (Verde do Quenhé) */
     --secondary: 161 94% 30%;
     --secondary-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     /* Cores de borda e contorno estruturais do Spartan */
     --border: 214.3 31.8% 91.4%;
