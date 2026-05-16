@@ -37,4 +37,6 @@ Aplicação web para gerenciar sorteios de Amigo Secreto de forma automatizada e
 * Mobile-first e interface acessível.
 
 ## 🛠️ 8. Tech Stack Principal (Diretrizes)
-* Angular 21+ (Standalone / Signals), Tailwind v4 e Supabase.
+* **Frontend:** Angular 21+ (Standalone / Signals), Tailwind CSS v4 e DaisyUI v5.
+* **Backend/Auth:** Supabase (BaaS).
+* **UI:** Componentes semânticos via classes DaisyUI (`btn`, `input`, `card`, etc.), com tema customizado da marca Quenhé.
