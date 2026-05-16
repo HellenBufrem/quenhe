@@ -9,7 +9,7 @@ Um aplicativo web moderno para organização de sorteios de Amigo Secreto de for
 ## 🚀 2. Tecnologias Utilizadas
 * **Frontend:** Angular 21+ (Standalone / Signals)
 * **Backend/Auth:** Supabase
-* **Estilização e UI:** Tailwind CSS, Spartan UI (HLM) e Lucide Angular
+* **Estilização e UI:** Tailwind CSS v4 e DaisyUI v5
 
 ## 🔗 3. Links da Prototipagem (Atividade 4)
 * **Protótipo Navegável e Responsivo (Stitch):** https://stitch.withgoogle.com/projects/14976334861006297120
@@ -34,7 +34,7 @@ Todo o planejamento arquitetural e de requisitos do projeto foi documentado ao l
 
 ### RA2 - Componentização e UI Declarativa Moderna
 - [x] **ID4:** Desenvolver componentes utilizando estritamente a arquitetura Standalone (sem o uso de NgModules).
-- [x] **ID5:** Incorporar e customizar componentes utilizando um Framework CSS moderno (ex: Tailwind CSS, Spartan).
+- [x] **ID5:** Incorporar e customizar componentes utilizando um Framework CSS moderno (Tailwind CSS + DaisyUI).
 - [ ] **ID6:** Aplicar a nova sintaxe de fluxo de controle (`@if` / `@switch`).
 - [ ] **ID7:** Utilizar a nova sintaxe de fluxo de controle `@for` com a propriedade `track`.
 - [ ] **ID8:** Aplicar Pipes (nativos ou customizados).

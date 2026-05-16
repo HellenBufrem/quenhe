@@ -1,31 +1,32 @@
-@config "../tailwind.config.js";
-
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: quenhe --default;
+  logs: false;
+}
 
-@layer base {
-  :root {
-    /* Cores de Fundo e Texto padrão */
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+@plugin "daisyui/theme" {
+  name: "quenhe";
+  default: true;
+  color-scheme: light;
 
-    /* 🎨 DESIGN TOKEN 1: Cor Primária (Vermelho do Quenhé) */
-    --primary: 0 76% 51%;
-    --primary-foreground: 0 0% 100%;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97% 0.01 240);
+  --color-base-300: oklch(92% 0.02 240);
+  --color-base-content: oklch(20% 0.05 260);
 
-    /* 🎨 DESIGN TOKEN 2: Cor Secundária (Verde do Quenhé) */
-    --secondary: 161 94% 30%;
-    --secondary-foreground: 0 0% 100%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+  --color-primary: oklch(58% 0.22 25);
+  --color-primary-content: oklch(100% 0 0);
 
-    /* Cores de borda e contorno estruturais do Spartan */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+  --color-secondary: oklch(48% 0.15 165);
+  --color-secondary-content: oklch(100% 0 0);
 
-    /* 🎨 DESIGN TOKEN 3: Shape (Bordas de pílula) */
-    --radius: 2rem;
-  }
+  --color-accent: oklch(48% 0.15 165);
+  --color-accent-content: oklch(100% 0 0);
+
+  --color-neutral: oklch(50% 0.02 260);
+  --color-neutral-content: oklch(98% 0 0);
+
+  --radius-selector: 2rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.5rem;
 }

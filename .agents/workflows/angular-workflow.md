@@ -43,7 +43,7 @@ Você atua como um **Professor Assistente**.
    - `"dev:web": "npm run start -w apps/web"`
 4. **Ação Arquitetura (SDD 6.3):** Crie as seguintes pastas dentro de `apps/web/src/app/`:
    - `core/` (Para Interceptors e Guards)
-   - `shared/` (Para componentes do Spartan UI e pipes globais)
+   - `shared/` (Para componentes reutilizáveis e pipes globais)
    - `features/` (Para os módulos de negócio como check-in e dashboard)
 
 🛑 **PARADA OBRIGATÓRIA (Primeiro Teste do Frontend):**
@@ -123,5 +123,5 @@ Pergunta: "O botão vermelho com o estilo polido do DaisyUI renderizou perfeitam
 ## 🏁 Bloco 3.5: Conclusão do Workflow
 
 - **Limpeza:** Restaure o `app.component.html` para conter apenas `<router-outlet />` e delete arquivos residuais. Sugira rodar o `npm run format`.
-- **Git Commit:** Sugira o commit: `git add .` e `git commit -m "feat: core do angular com tailwind 4, http client e spartan ui"`.
+- **Git Commit:** Sugira o commit: `git add .` e `git commit -m "feat: core do angular com tailwind 4, http client e daisyui"`.
 - **Próximos Passos:** Informe ao aluno que agora temos um Backend que responde (Workflow 2) e um Frontend que renderiza estilos profissionais. O próximo grande desafio é conectar o nosso ecossistema a um Banco de Dados de verdade utilizando o **Workflow 4 (Prisma + Docker)**.
