@@ -1,12 +1,18 @@
-<div class="bg-base-200 text-base-content min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+<div
+  class="bg-base-200 text-base-content min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden"
+>
   <div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
   <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
 
   <main class="w-full max-w-md z-10">
-    <div class="card bg-base-100 rounded-[1.5rem_0.75rem_1.5rem_0.75rem] border border-base-300 p-8 md:p-12 shadow-lg">
+    <div
+      class="card bg-base-100 rounded-[1.5rem_0.75rem_1.5rem_0.75rem] border border-base-300 p-8 md:p-12 shadow-lg"
+    >
       <div class="flex flex-col items-center text-center">
         <div class="mb-8 relative">
-          <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-primary-content shadow-lg rotate-3">
+          <div
+            class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-primary-content shadow-lg rotate-3"
+          >
             <span class="text-3xl">🎁</span>
           </div>
         </div>
@@ -18,10 +24,12 @@
           </p>
         </header>
 
-        <form class="w-full space-y-6">
+        <form class="w-full space-y-6" (ngSubmit)="onLogin()">
           <label class="form-control w-full">
             <div class="label py-0">
-              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60">E-mail</span>
+              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60"
+                >E-mail</span
+              >
             </div>
             <input
               type="email"
@@ -32,7 +40,9 @@
 
           <label class="form-control w-full">
             <div class="label py-0">
-              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60">Senha</span>
+              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60"
+                >Senha</span
+              >
             </div>
             <input
               type="password"
@@ -48,7 +58,7 @@
 
         <div class="mt-10 pt-8 w-full border-t border-base-300">
           <p class="text-sm text-base-content/60 mb-2">Ainda não tem uma conta?</p>
-          <a class="link link-secondary font-bold">Cadastre-se agora</a>
+          <a class="link link-secondary font-bold" routerLink="/cadastro">Cadastre-se agora</a>
         </div>
       </div>
     </div>

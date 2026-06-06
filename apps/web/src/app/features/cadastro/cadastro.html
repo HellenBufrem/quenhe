@@ -1,0 +1,158 @@
+<div class="bg-gray-100 font-sans flex items-center justify-center min-h-screen p-4">
+  <!-- BEGIN: MainContainer -->
+  <main
+    class="w-full max-w-md bg-[#F9FAFB] min-h-[90vh] flex flex-col justify-between rounded-xl overflow-hidden shadow-sm"
+  >
+    <!-- BEGIN: RegisterCard -->
+    <section class="flex-grow flex flex-col items-center justify-center px-6 py-8">
+      <div
+        class="bg-white w-full rounded-custom card-shadow p-8 flex flex-col items-center"
+        data-purpose="registration-card"
+      >
+        <!-- BEGIN: LogoSection -->
+        <div class="relative mb-6">
+          <!-- Main Gift Icon -->
+          <div
+            class="bg-brand-red w-16 h-16 rounded-2xl flex items-center justify-center icon-shadow"
+          >
+            <svg
+              class="h-10 w-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V6a2 2 0 10-2 2h2zm0 0h4l1 3H7l1-3h4zm7 3v10H5V11h14z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+          <!-- Small Badge with Stars -->
+          <div
+            class="absolute -bottom-2 -right-2 bg-[#065F46] w-7 h-7 rounded-lg flex items-center justify-center border-2 border-white"
+          >
+            <svg
+              class="h-4 w-4 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <!-- END: LogoSection -->
+
+        <!-- BEGIN: HeadingSection -->
+        <div class="text-center mb-8">
+          <h1 class="text-2xl font-extrabold text-gray-900 mb-2">Amigo Secreto</h1>
+          <p class="text-sm text-gray-600 leading-tight px-4">
+            A magia da troca de presentes começa aqui.
+          </p>
+        </div>
+        <!-- END: HeadingSection -->
+
+        <!-- BEGIN: RegistrationForm -->
+        <form (ngSubmit)="onSubmit()" class="w-full space-y-4">
+          <!-- Username Field -->
+          <div data-purpose="form-group">
+            <label
+              class="block text-[10px] font-bold text-brand-gray-label uppercase tracking-wider mb-1 px-1"
+              >Nome (Usuário)</label
+            >
+            <input
+              name="nome"
+              [(ngModel)]="nome"
+              class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              placeholder="Seu nome de usuário"
+              type="text"
+            />
+          </div>
+
+          <!-- Email Field -->
+          <div data-purpose="form-group">
+            <label
+              class="block text-[10px] font-bold text-brand-gray-label uppercase tracking-wider mb-1 px-1"
+              >E-mail</label
+            >
+            <input
+              name="email"
+              [(ngModel)]="email"
+              class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              placeholder="seu@email.com"
+              type="email"
+            />
+          </div>
+
+          <!-- Password Field -->
+          <div data-purpose="form-group">
+            <label
+              class="block text-[10px] font-bold text-brand-gray-label uppercase tracking-wider mb-1 px-1"
+              >Senha</label
+            >
+            <input
+              name="senha"
+              [(ngModel)]="senha"
+              class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              placeholder="••••••••"
+              type="password"
+            />
+          </div>
+
+          <!-- Confirm Password Field -->
+          <div data-purpose="form-group">
+            <label
+              class="block text-[10px] font-bold text-brand-gray-label uppercase tracking-wider mb-1 px-1"
+              >Confirme a Senha</label
+            >
+            <input
+              name="confirmarSenha"
+              [(ngModel)]="confirmarSenha"
+              class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              placeholder="••••••••"
+              type="password"
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button
+              class="w-full bg-brand-red text-white font-bold py-4 rounded-xl text-md btn-shadow active:scale-[0.98] transition-transform"
+              type="submit"
+            >
+              Criar Conta
+            </button>
+          </div>
+        </form>
+        <!-- END: RegistrationForm -->
+
+        <!-- BEGIN: RedirectSection -->
+        <div class="mt-8 text-center">
+          <p class="text-sm text-gray-600 mb-1">Já tem uma conta?</p>
+          <a
+            class="text-brand-green font-bold text-md flex items-center justify-center gap-1"
+            routerLink="/"
+          >
+            Faça Login <span class="text-[10px]">❯</span>
+          </a>
+        </div>
+        <!-- END: RedirectSection -->
+      </div>
+    </section>
+    <!-- END: RegisterCard -->
+
+    <!-- BEGIN: Footer -->
+    <footer class="pb-8 text-center">
+      <p class="text-[10px] font-bold text-brand-gray-text tracking-widest uppercase">
+        Edição 2024 • O Anfitrião Moderno
+      </p>
+    </footer>
+    <!-- END: Footer -->
+  </main>
+  <!-- END: MainContainer -->
+</div>

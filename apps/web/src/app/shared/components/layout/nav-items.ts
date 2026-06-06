@@ -4,7 +4,7 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Início', path: '/' },
-  { label: 'Grupos', path: '/grupos' },
-  { label: 'Sorteio', path: '/sorteio' },
+  { label: 'Início', path: '/home' },
+  { label: 'Grupos', path: '/dashboard/XRT-998' },
+  { label: 'Revelação', path: '/revelacao' },
 ];

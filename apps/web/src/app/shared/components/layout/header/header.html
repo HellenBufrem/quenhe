@@ -1,27 +1,34 @@
-<header class="navbar border-base-300 bg-base-100 border-b px-4">
-  <div class="flex-1 gap-2">
-    <a routerLink="/" class="text-primary text-xl font-bold tracking-tight">Quenhé</a>
+<header
+  class="flex justify-between items-center w-full px-6 py-4 sticky top-0 z-50 bg-[#f8f9fa] dark:bg-[#191c1d] border-b border-outline-variant/10 shadow-sm dark:shadow-none"
+>
+  <div class="flex items-center gap-4">
+    <a
+      routerLink="/"
+      class="text-xl font-bold tracking-tight text-[#b61722] dark:text-[#da3437] hover:opacity-90 transition-opacity"
+      >Quenhé</a
+    >
   </div>
 
-  <nav class="hidden flex-none lg:block" aria-label="Navegação principal">
-    <ul class="menu menu-horizontal gap-1 px-1">
-      @for (item of navItems; track item.path) {
-        <li>
-          <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: item.path === '/' }">
-            {{ item.label }}
-          </a>
-        </li>
-      }
-    </ul>
+  <nav class="hidden sm:flex items-center gap-6" aria-label="Navegação principal">
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="text-primary font-semibold"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+        class="text-sm text-on-surface-variant hover:text-primary transition-colors py-1"
+      >
+        {{ item.label }}
+      </a>
+    }
   </nav>
 
-  <div class="flex-none lg:hidden">
-    <label
-      [attr.for]="drawerId"
-      class="btn btn-square btn-ghost text-lg"
-      aria-label="Abrir menu"
+  <div class="flex items-center gap-2">
+    <a
+      routerLink="/login"
+      class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center p-1 rounded-full hover:bg-surface-container-low"
+      aria-label="Acessar Perfil"
     >
-      ☰
-    </label>
+      <span class="material-symbols-outlined text-2xl">account_circle</span>
+    </a>
   </div>
 </header>
