@@ -21,4 +21,32 @@ export class AmigoSecretoService {
     }
     return response.json();
   }
+
+  async adicionarParticipante(dadosDoNovoParticipante: Participante): Promise<Participante> {
+    const response = await fetch(this.apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dadosDoNovoParticipante),
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to add participant: ${response.statusText}`);
+    }
+    return response.json();
+  }
+
+  async atualizarStatusParticipante(id: string, status: 'Pronto' | 'Pendente'): Promise<Participante> {
+    const response = await fetch(`${this.apiUrl}/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ status }),
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to update participant status: ${response.statusText}`);
+    }
+    return response.json();
+  }
 }

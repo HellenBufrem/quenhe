@@ -64,10 +64,16 @@
   </div>
 
   <!-- Bottom Action Area -->
-  <div class="mt-8">
+  <div class="mt-8 space-y-3">
+    @if (!sorteioDisponivel()) {
+      <p class="text-xs text-center text-error font-medium">
+        ⚠️ O sorteio requer pelo menos 3 participantes e todos com o status "Pronto".
+      </p>
+    }
     <button
       routerLink="/revelacao"
-      class="w-full bg-secondary hover:bg-secondary/90 text-on-secondary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(0,108,73,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
+      [disabled]="!sorteioDisponivel()"
+      class="w-full bg-secondary hover:bg-secondary/90 disabled:opacity-50 disabled:cursor-not-allowed text-on-secondary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(0,108,73,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
     >
       <span class="material-symbols-outlined">shuffle</span>
       Realizar Sorteio

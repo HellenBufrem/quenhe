@@ -28,5 +28,6 @@
       "status": "Pendente",
       "avatarUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDc5EGT0j_1uVj_dRTPUQAIFRrI5i_hbBzDRZLbXG_U7AFMGXJVcJ6LCOsGaQN4Ylxl4L1PA-mWcaHmiTytNm0aAjqC9EiB_yRnUBGEtJgOrq-EATdYXSTjWUUBiv3IDa2kQXy4yXhQLRGoZwnKKSgjw1GgUpmKfFW-A1b0E7WFqcQCDiPITDHYOqcBUeS9Ug-sEZoovqXPVHrQ1IF5epnauxveqOwq5PLHjkd9Zvk7WDDE9TbErNhG19CpjqscPRbhxDD8-wGwAfUY"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
