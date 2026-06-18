@@ -10,125 +10,143 @@
   ></div>
 
   <div class="max-w-md w-full text-center z-10">
-    <p class="text-label-sm uppercase tracking-[0.05em] text-on-surface-variant mb-4">
-      Prepare seu coração
-    </p>
-    <h2
-      class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-12 leading-tight"
-    >
-      Seu amigo secreto é...
-    </h2>
+    @if (carregando()) {
+      <div class="flex flex-col items-center justify-center p-12">
+        <span class="loading loading-spinner loading-lg text-primary"></span>
+        <p class="mt-4 text-sm text-on-surface-variant">Carregando revelação...</p>
+      </div>
+    } @else if (erro()) {
+      <div class="bg-error-container/20 border border-error/20 p-6 rounded-xl text-center space-y-4">
+        <span class="material-symbols-outlined text-4xl text-error">warning</span>
+        <p class="text-sm font-medium text-error">{{ erro() }}</p>
+        <a
+          class="btn btn-outline btn-sm text-primary border-primary hover:bg-primary hover:text-on-primary mt-2"
+          [routerLink]="['/dashboard', grupo()]"
+        >
+          Voltar para o Grupo
+        </a>
+      </div>
+    } @else {
+      <p class="text-label-sm uppercase tracking-[0.05em] text-on-surface-variant mb-4">
+        Prepare seu coração
+      </p>
+      <h2
+        class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-12 leading-tight"
+      >
+        Seu amigo secreto é...
+      </h2>
 
-    <!-- Mystery Card (The Anchor of the Screen) -->
-    <div class="relative group perspective-1000 mx-auto w-full max-w-[320px] h-[450px]">
-      <div class="relative w-full h-full duration-700 transition-all transform-gpu">
-        @if (isRevealed()) {
-          <!-- Back Side: Revealed Card -->
-          <div
-            class="absolute inset-0 bg-[#ffffff] rounded-tl-xl rounded-br-xl rounded-tr-lg rounded-bl-lg shadow-2xl flex flex-col items-center justify-center p-8 overflow-hidden border border-on-surface/10"
-          >
+      <!-- Mystery Card (The Anchor of the Screen) -->
+      <div class="relative group perspective-1000 mx-auto w-full max-w-[320px] h-[450px]">
+        <div class="relative w-full h-full duration-700 transition-all transform-gpu">
+          @if (isRevealed()) {
+            <!-- Back Side: Revealed Card -->
             <div
-              class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent"
-            ></div>
-            <div class="relative z-10 flex flex-col items-center w-full">
-              <div
-                class="w-24 h-24 rounded-full bg-secondary/15 flex items-center justify-center mb-6 overflow-hidden border-2 border-secondary"
-              >
-                <img
-                  alt="Ana Paula"
-                  class="w-full h-full object-cover"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS7CzfVJ5eYmyw9sVaWtnkmBBVrkKy2U46DNv0rUh9QWRlNI4xD-L4wRLgvyVUeF43h6bhIBQ3sN6wPiYtjlINRjfddm-Yk04ZK90woA0dPY6ZJiYQ8ll4RSNo5Wf8UYYMVaKRdEX_gpPvj5slU_PviBD1D2EmmTK4KP3xMMBFahgFr3kj-gaZvasdhgLOGdHSeYdHh6fG7hl1cgle4JpZTQf3oQZEw0jk3q1vXgSU1ht3tOQmVNH5oGIED8VVHLP-BevP5vLabmpN"
-                />
-              </div>
-              <span class="text-xs font-semibold text-secondary uppercase tracking-widest mb-1"
-                >Seu Amigo Secreto é</span
-              >
-              <h3 class="text-on-surface font-headline font-black text-3xl mb-1 text-center">
-                Ana Paula
-              </h3>
-              <p class="text-on-surface-variant text-sm opacity-80 mb-8">ana.paula@work.com</p>
-
-              <button
-                (click)="hideSecret()"
-                class="w-full py-4 px-6 bg-[#191c1d] text-[#f8f9fa] rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all"
-              >
-                <span>Esconder Nome</span>
-                <span class="material-symbols-outlined text-[20px]">visibility_off</span>
-              </button>
-            </div>
-            <!-- Decorative "Stamp" -->
-            <div
-              class="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-secondary/20 rounded-full flex items-center justify-center rotate-12"
+              class="absolute inset-0 bg-[#ffffff] rounded-tl-xl rounded-br-xl rounded-tr-lg rounded-bl-lg shadow-2xl flex flex-col items-center justify-center p-8 overflow-hidden border border-on-surface/10"
             >
-              <span class="text-secondary/20 font-black text-xs tracking-widest uppercase"
-                >Revelado</span
-              >
-            </div>
-          </div>
-        } @else {
-          <!-- Front Side: Mystery Envelope/Card -->
-          <div
-            class="absolute inset-0 bg-[#191c1d] rounded-tl-xl rounded-br-xl rounded-tr-lg rounded-bl-lg shadow-2xl flex flex-col items-center justify-center p-8 overflow-hidden border border-on-surface/10"
-          >
-            <!-- Card Texture Overlay -->
-            <div
-              class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-surface-container-highest via-transparent to-transparent"
-            ></div>
-            <div class="relative z-10 flex flex-col items-center">
               <div
-                class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-8"
+                class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-secondary/20 via-transparent to-transparent"
+              ></div>
+              <div class="relative z-10 flex flex-col items-center w-full">
+                <div
+                  class="w-24 h-24 rounded-full bg-secondary/15 flex items-center justify-center mb-6 overflow-hidden border-2 border-secondary"
+                >
+                  <img
+                    [alt]="amigoSecreto()?.nome"
+                    class="w-full h-full object-cover"
+                    [src]="amigoSecreto()?.avatarUrl"
+                  />
+                </div>
+                <span class="text-xs font-semibold text-secondary uppercase tracking-widest mb-1"
+                  >Seu Amigo Secreto é</span
+                >
+                <h3 class="text-on-surface font-headline font-black text-3xl mb-1 text-center">
+                  {{ amigoSecreto()?.nome }}
+                </h3>
+                <p class="text-on-surface-variant text-sm opacity-80 mb-8">{{ amigoSecreto()?.email }}</p>
+
+                <button
+                  (click)="hideSecret()"
+                  class="w-full py-4 px-6 bg-[#191c1d] text-[#f8f9fa] rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all"
+                >
+                  <span>Esconder Nome</span>
+                  <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                </button>
+              </div>
+              <!-- Decorative "Stamp" -->
+              <div
+                class="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-secondary/20 rounded-full flex items-center justify-center rotate-12"
               >
-                <span
-                  class="material-symbols-outlined text-primary text-5xl"
-                  style="font-variation-settings: 'FILL' 1"
-                  >lock</span
+                <span class="text-secondary/20 font-black text-xs tracking-widest uppercase"
+                  >Revelado</span
                 >
               </div>
-              <h3 class="text-surface font-headline font-bold text-2xl mb-2 text-[#f8f9fa]">
-                Mistério Natalino
-              </h3>
-              <p
-                class="text-surface-container-highest text-sm opacity-70 mb-12 text-[#f8f9fa]/80 text-center"
-              >
-                O nome está guardado sob sete chaves.
-              </p>
-              <!-- Secondary Button (Emerald) Inside Card -->
-              <button
-                (click)="revealSecret()"
-                class="w-full py-4 px-6 bg-secondary text-on-secondary rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-secondary/20 active:scale-95 transition-all bg-gradient-to-br from-secondary to-tertiary"
-                id="reveal_trigger"
-              >
-                <span>Pressione para Revelar</span>
-                <span class="material-symbols-outlined">auto_awesome</span>
-              </button>
             </div>
-            <!-- Decorative "Stamp" -->
+          } @else {
+            <!-- Front Side: Mystery Envelope/Card -->
             <div
-              class="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-primary/20 rounded-full flex items-center justify-center rotate-12"
+              class="absolute inset-0 bg-[#191c1d] rounded-tl-xl rounded-br-xl rounded-tr-lg rounded-bl-lg shadow-2xl flex flex-col items-center justify-center p-8 overflow-hidden border border-on-surface/10"
             >
-              <span class="text-primary/20 font-black text-xs tracking-widest uppercase"
-                >Altamente Confidencial</span
+              <!-- Card Texture Overlay -->
+              <div
+                class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-surface-container-highest via-transparent to-transparent"
+              ></div>
+              <div class="relative z-10 flex flex-col items-center">
+                <div
+                  class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mb-8"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary text-5xl"
+                    style="font-variation-settings: 'FILL' 1"
+                    >lock</span
+                  >
+                </div>
+                <h3 class="text-surface font-headline font-bold text-2xl mb-2 text-[#f8f9fa]">
+                  Mistério Natalino
+                </h3>
+                <p
+                  class="text-surface-container-highest text-sm opacity-70 mb-12 text-[#f8f9fa]/80 text-center"
+                >
+                  O nome está guardado sob sete chaves.
+                </p>
+                <!-- Secondary Button (Emerald) Inside Card -->
+                <button
+                  (click)="revealSecret()"
+                  class="w-full py-4 px-6 bg-secondary text-on-secondary rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg hover:shadow-secondary/20 active:scale-95 transition-all bg-gradient-to-br from-secondary to-tertiary"
+                  id="reveal_trigger"
+                >
+                  <span>Pressione para Revelar</span>
+                  <span class="material-symbols-outlined">auto_awesome</span>
+                </button>
+              </div>
+              <!-- Decorative "Stamp" -->
+              <div
+                class="absolute -bottom-6 -right-6 w-32 h-32 border-4 border-primary/20 rounded-full flex items-center justify-center rotate-12"
               >
+                <span class="text-primary/20 font-black text-xs tracking-widest uppercase"
+                  >Altamente Confidencial</span
+                >
+              </div>
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
-    </div>
 
-    <!-- Footer Meta -->
-    <div class="mt-12 space-y-4">
-      <p class="text-on-surface-variant text-sm flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-xs">info</span>
-        Esta revelação é única e não pode ser desfeita.
-      </p>
-      <a
-        class="inline-flex items-center gap-2 text-primary font-bold hover:underline py-2 transition-all"
-        routerLink="/dashboard/XRT-998"
-      >
-        <span class="material-symbols-outlined text-sm">arrow_back</span>
-        Voltar para o Grupo
-      </a>
-    </div>
+      <!-- Footer Meta -->
+      <div class="mt-12 space-y-4">
+        <p class="text-on-surface-variant text-sm flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-xs">info</span>
+          Esta revelação é única e não pode ser desfeita.
+        </p>
+        <a
+          class="inline-flex items-center gap-2 text-primary font-bold hover:underline py-2 transition-all"
+          [routerLink]="['/dashboard', grupo()]"
+        >
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          Voltar para o Grupo
+        </a>
+      </div>
+    }
   </div>
 
   <!-- Asymmetric Contextual Cards (Editorial Touches) -->

@@ -19,24 +19,25 @@ export class CadastroComponent {
   confirmarSenha = model('');
 
   async onSubmit() {
-    console.log('Submetendo cadastro:', {
-      nome: this.nome(),
-      email: this.email(),
-      senha: this.senha(),
-      confirmarSenha: this.confirmarSenha(),
-    });
-
-    try {
-      await this.amigoSecretoService.adicionarParticipante({
-        nome: this.nome(),
-        email: this.email(),
-        status: 'Pendente',
-        avatarUrl: `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(this.nome())}`
-      });
-    } catch (error) {
-      console.error('Erro ao cadastrar participante no json-server:', error);
+    if (this.senha() !== this.confirmarSenha()) {
+      alert('As senhas não coincidem!');
+      return;
     }
 
-    this.router.navigate(['/home']);
+    try {
+      await this.amigoSecretoService.cadastrarUsuario(
+        this.email(),
+        this.senha(),
+        this.nome()
+      );
+      
+      // Auto login após cadastro
+      await this.amigoSecretoService.login(this.email(), this.senha());
+      
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Erro ao cadastrar usuário no Supabase:', error);
+      alert('Erro ao realizar cadastro.');
+    }
   }
 }

@@ -1,6 +1,7 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, model } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AmigoSecretoService } from '../../core/services/amigo-secreto.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
   private router = inject(Router);
+  private amigoSecretoService = inject(AmigoSecretoService);
 
-  onLogin() {
-    this.router.navigate(['/home']);
+  email = model('');
+  senha = model('');
+
+  async onLogin() {
+    try {
+      await this.amigoSecretoService.login(this.email(), this.senha());
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+      alert('Falha no login. Verifique suas credenciais.');
+    }
   }
 }

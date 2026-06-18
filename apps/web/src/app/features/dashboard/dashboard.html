@@ -5,7 +5,7 @@
       <span class="text-[11px] font-medium uppercase tracking-[0.05em] text-primary"
         >Organizador</span
       >
-      <h2 class="text-3xl font-extrabold tracking-tight text-on-surface">Amigos do Trabalho</h2>
+      <h2 class="text-3xl font-extrabold tracking-tight text-on-surface">{{ nomeGrupo() }}</h2>
     </div>
     <!-- Invitation Code Card -->
     <div
@@ -65,18 +65,28 @@
 
   <!-- Bottom Action Area -->
   <div class="mt-8 space-y-3">
-    @if (!sorteioDisponivel()) {
-      <p class="text-xs text-center text-error font-medium">
-        ⚠️ O sorteio requer pelo menos 3 participantes e todos com o status "Pronto".
-      </p>
+    @if (grupoStatus() === 'completed') {
+      <button
+        (click)="irParaRevelacao()"
+        class="w-full bg-primary hover:bg-primary/90 text-on-primary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(206,43,43,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
+      >
+        <span class="material-symbols-outlined">visibility</span>
+        Ver Meu Amigo Secreto
+      </button>
+    } @else {
+      @if (!sorteioDisponivel()) {
+        <p class="text-xs text-center text-error font-medium">
+          ⚠️ O sorteio requer pelo menos 3 participantes e todos com o status "Pronto".
+        </p>
+      }
+      <button
+        (click)="iniciarSorteio()"
+        [disabled]="!sorteioDisponivel()"
+        class="w-full bg-secondary hover:bg-secondary/90 disabled:opacity-50 disabled:cursor-not-allowed text-on-secondary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(0,108,73,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
+      >
+        <span class="material-symbols-outlined">shuffle</span>
+        Realizar Sorteio
+      </button>
     }
-    <button
-      routerLink="/revelacao"
-      [disabled]="!sorteioDisponivel()"
-      class="w-full bg-secondary hover:bg-secondary/90 disabled:opacity-50 disabled:cursor-not-allowed text-on-secondary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(0,108,73,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
-    >
-      <span class="material-symbols-outlined">shuffle</span>
-      Realizar Sorteio
-    </button>
   </div>
 </main>

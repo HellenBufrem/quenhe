@@ -10,28 +10,35 @@ import {
   effect,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AmigoSecretoService, Participante } from '../../core/services/amigo-secreto.service';
 import { ParticipanteCardComponent } from '../../shared/components/participante-card/participante-card';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink, ParticipanteCardComponent],
+  imports: [ParticipanteCardComponent],
   templateUrl: './dashboard.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
   private amigoSecretoService = inject(AmigoSecretoService);
+  private router = inject(Router);
   private platformId = inject(PLATFORM_ID);
 
   codigo = input<string>();
 
+  nomeGrupo = signal<string>('Carregando...');
+  grupoStatus = signal<'pending' | 'completed'>('pending');
   participantesList = signal<Participante[]>([]);
 
-  // Computed signal que garante que o sorteio só está disponível com >= 3 pessoas prontas
+  // Computed signal que garante que o sorteio só está disponível com >= 3 pessoas prontas e grupo pendente
   sorteioDisponivel = computed(() => {
     const list = this.participantesList();
-    return list.length >= 3 && list.every((p) => p.status === 'Pronto');
+    return (
+      this.grupoStatus() === 'pending' &&
+      list.length >= 3 &&
+      list.every((p) => p.status === 'Pronto')
+    );
   });
 
   constructor() {
@@ -42,11 +49,21 @@ export class DashboardComponent implements OnInit {
 
   async ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
+      const groupId = this.codigo();
+      if (!groupId) return;
+
       try {
-        const data = await this.amigoSecretoService.carregarParticipantes();
+        // 1. Carrega os dados do grupo
+        const grupo = await this.amigoSecretoService.obterGrupo(groupId);
+        this.nomeGrupo.set(grupo.name);
+        this.grupoStatus.set(grupo.status);
+
+        // 2. Carrega participantes deste grupo específico
+        const data = await this.amigoSecretoService.carregarParticipantesDoGrupo(groupId);
         this.participantesList.set(data);
       } catch (error) {
-        console.error('Erro ao carregar participantes:', error);
+        console.error('Erro ao carregar dados do painel:', error);
+        this.nomeGrupo.set('Grupo Não Encontrado');
       }
     }
   }
@@ -56,10 +73,16 @@ export class DashboardComponent implements OnInit {
     const participante = this.participantesList().find((p) => p.id === id);
     if (!participante) return;
 
+    // Se o sorteio já ocorreu, não permite alterar status dos participantes
+    if (this.grupoStatus() === 'completed') {
+      alert('O sorteio já foi concluído neste grupo.');
+      return;
+    }
+
     const novoStatus = participante.status === 'Pronto' ? 'Pendente' : 'Pronto';
 
     try {
-      // Grava no json-server
+      // Grava no Supabase
       await this.amigoSecretoService.atualizarStatusParticipante(id, novoStatus);
 
       // Atualiza o signal local para refletir na tela imediatamente
@@ -69,5 +92,25 @@ export class DashboardComponent implements OnInit {
     } catch (error) {
       console.error('Erro ao atualizar status do participante:', error);
     }
+  }
+
+  async iniciarSorteio() {
+    const groupId = this.codigo();
+    if (!groupId) return;
+
+    try {
+      await this.amigoSecretoService.realizarSorteio(groupId, this.participantesList());
+      this.grupoStatus.set('completed');
+      
+      // Direciona para a revelação passando o ID do grupo
+      this.router.navigate(['/revelacao'], { queryParams: { grupo: groupId } });
+    } catch (error) {
+      console.error('Erro ao realizar sorteio:', error);
+      alert('Falha ao realizar o sorteio.');
+    }
+  }
+
+  irParaRevelacao() {
+    this.router.navigate(['/revelacao'], { queryParams: { grupo: this.codigo() } });
   }
 }
