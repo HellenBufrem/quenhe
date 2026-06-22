@@ -19,12 +19,21 @@
       <div class="bg-error-container/20 border border-error/20 p-6 rounded-xl text-center space-y-4">
         <span class="material-symbols-outlined text-4xl text-error">warning</span>
         <p class="text-sm font-medium text-error">{{ erro() }}</p>
-        <a
-          class="btn btn-outline btn-sm text-primary border-primary hover:bg-primary hover:text-on-primary mt-2"
-          [routerLink]="['/dashboard', grupo()]"
-        >
-          Voltar para o Grupo
-        </a>
+        @if (grupo()) {
+          <a
+            class="btn btn-outline btn-sm text-primary border-primary hover:bg-primary hover:text-on-primary mt-2"
+            [routerLink]="['/dashboard', grupo()]"
+          >
+            Voltar para o Grupo
+          </a>
+        } @else {
+          <a
+            class="btn btn-outline btn-sm text-primary border-primary hover:bg-primary hover:text-on-primary mt-2"
+            [routerLink]="['/home']"
+          >
+            Criar ou Entrar em um Grupo
+          </a>
+        }
       </div>
     } @else {
       <p class="text-label-sm uppercase tracking-[0.05em] text-on-surface-variant mb-4">
