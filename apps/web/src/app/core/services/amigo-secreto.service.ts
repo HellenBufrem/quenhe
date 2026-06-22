@@ -1,5 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { SupabaseService } from './supabase.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 export interface Participante {
   id?: string;
@@ -21,6 +24,28 @@ export interface Grupo {
 })
 export class AmigoSecretoService {
   private supabase = inject(SupabaseService).client;
+
+  private session$ = new Observable<any>((subscriber) => {
+    // Busca a sessão inicial
+    this.supabase.auth.getSession().then(({ data: { session } }) => {
+      subscriber.next(session);
+    });
+
+    // Escuta mudanças de estado
+    const { data: { subscription } } = this.supabase.auth.onAuthStateChange((event, session) => {
+      subscriber.next(session);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  });
+
+  usuarioLogado = toSignal(
+    this.session$.pipe(
+      map(session => session?.user ?? null)
+    )
+  );
 
   // --- AUTENTICAÇÃO ---
   async cadastrarUsuario(email: string, senha: string, nome: string): Promise<any> {

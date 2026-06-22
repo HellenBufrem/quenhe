@@ -58,7 +58,7 @@
         <!-- END: HeadingSection -->
 
         <!-- BEGIN: RegistrationForm -->
-        <form (ngSubmit)="onSubmit()" class="w-full space-y-4">
+        <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" class="w-full space-y-4">
           <!-- Username Field -->
           <div data-purpose="form-group">
             <label
@@ -66,12 +66,22 @@
               >Nome (Usuário)</label
             >
             <input
-              name="nome"
-              [(ngModel)]="nome"
+              formControlName="nome"
               class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              [class.ring-2]="cadastroForm.get('nome')?.invalid && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)"
+              [class.ring-red-500]="cadastroForm.get('nome')?.invalid && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)"
               placeholder="Seu nome de usuário"
               type="text"
             />
+            @if (cadastroForm.get('nome')?.invalid && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+                @if (cadastroForm.get('nome')?.hasError('required')) {
+                  Nome é obrigatório.
+                } @else if (cadastroForm.get('nome')?.hasError('minlength')) {
+                  O nome deve conter no mínimo 3 caracteres.
+                }
+              </span>
+            }
           </div>
 
           <!-- Email Field -->
@@ -81,12 +91,22 @@
               >E-mail</label
             >
             <input
-              name="email"
-              [(ngModel)]="email"
+              formControlName="email"
               class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              [class.ring-2]="cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)"
+              [class.ring-red-500]="cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)"
               placeholder="seu@email.com"
               type="email"
             />
+            @if (cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+                @if (cadastroForm.get('email')?.hasError('required')) {
+                  E-mail é obrigatório.
+                } @else if (cadastroForm.get('email')?.hasError('email')) {
+                  E-mail inválido.
+                }
+              </span>
+            }
           </div>
 
           <!-- Password Field -->
@@ -96,12 +116,22 @@
               >Senha</label
             >
             <input
-              name="senha"
-              [(ngModel)]="senha"
+              formControlName="senha"
               class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              [class.ring-2]="cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)"
+              [class.ring-red-500]="cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)"
               placeholder="••••••••"
               type="password"
             />
+            @if (cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+                @if (cadastroForm.get('senha')?.hasError('required')) {
+                  Senha é obrigatória.
+                } @else if (cadastroForm.get('senha')?.hasError('minlength')) {
+                  A senha deve conter no mínimo 6 caracteres.
+                }
+              </span>
+            }
           </div>
 
           <!-- Confirm Password Field -->
@@ -111,19 +141,30 @@
               >Confirme a Senha</label
             >
             <input
-              name="confirmarSenha"
-              [(ngModel)]="confirmarSenha"
+              formControlName="confirmarSenha"
               class="w-full bg-brand-gray-input border-none rounded-input py-3 px-4 text-sm text-gray-700 placeholder-brand-gray-text focus:ring-2 focus:ring-brand-red/50"
+              [class.ring-2]="cadastroForm.get('confirmarSenha')?.invalid && (cadastroForm.get('confirmarSenha')?.dirty || cadastroForm.get('confirmarSenha')?.touched)"
+              [class.ring-red-500]="cadastroForm.get('confirmarSenha')?.invalid && (cadastroForm.get('confirmarSenha')?.dirty || cadastroForm.get('confirmarSenha')?.touched)"
               placeholder="••••••••"
               type="password"
             />
+            @if (cadastroForm.get('confirmarSenha')?.invalid && (cadastroForm.get('confirmarSenha')?.dirty || cadastroForm.get('confirmarSenha')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+                @if (cadastroForm.get('confirmarSenha')?.hasError('required')) {
+                  Confirmação de senha é obrigatória.
+                } @else if (cadastroForm.get('confirmarSenha')?.hasError('mismatch')) {
+                  As senhas não coincidem.
+                }
+              </span>
+            }
           </div>
 
           <!-- Submit Button -->
           <div class="pt-2">
             <button
-              class="w-full bg-brand-red text-white font-bold py-4 rounded-xl text-md btn-shadow active:scale-[0.98] transition-transform"
+              class="w-full bg-brand-red text-white font-bold py-4 rounded-xl text-md btn-shadow active:scale-[0.98] transition-transform disabled:opacity-50 disabled:cursor-not-allowed"
               type="submit"
+              [disabled]="cadastroForm.invalid"
             >
               Criar Conta
             </button>

@@ -4,6 +4,8 @@ import { CadastroComponent } from './features/cadastro/cadastro';
 import { HomeComponent } from './features/home/home';
 import { DashboardComponent } from './features/dashboard/dashboard';
 import { RevelacaoComponent } from './features/revelacao/revelacao';
+import { PanelLayoutComponent } from './shared/components/layout/panel-layout';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -20,15 +22,27 @@ export const routes: Routes = [
     component: CadastroComponent,
   },
   {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'dashboard/:codigo',
-    component: DashboardComponent,
-  },
-  {
-    path: 'revelacao',
-    component: RevelacaoComponent,
+    path: '',
+    component: PanelLayoutComponent,
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'criacao-grupo',
+        component: HomeComponent,
+      },
+      {
+        path: 'home',
+        redirectTo: 'criacao-grupo',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dashboard/:codigo',
+        component: DashboardComponent,
+      },
+      {
+        path: 'revelacao',
+        component: RevelacaoComponent,
+      },
+    ],
   },
 ];

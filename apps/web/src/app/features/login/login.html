@@ -24,7 +24,7 @@
           </p>
         </header>
 
-        <form class="w-full space-y-6" (ngSubmit)="onLogin()">
+        <form class="w-full space-y-6" [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <label class="form-control w-full">
             <div class="label py-0">
               <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60"
@@ -32,12 +32,21 @@
               >
             </div>
             <input
-              name="email"
-              [(ngModel)]="email"
+              formControlName="email"
               type="email"
               placeholder="seu@email.com"
               class="input input-bordered w-full bg-secondary/5 focus:outline-primary"
+              [class.input-error]="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
             />
+            @if (loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 text-left">
+                @if (loginForm.get('email')?.hasError('required')) {
+                  E-mail é obrigatório.
+                } @else if (loginForm.get('email')?.hasError('email')) {
+                  E-mail inválido.
+                }
+              </span>
+            }
           </label>
 
           <label class="form-control w-full">
@@ -47,15 +56,24 @@
               >
             </div>
             <input
-              name="senha"
-              [(ngModel)]="senha"
+              formControlName="senha"
               type="password"
               placeholder="••••••••"
               class="input input-bordered w-full bg-secondary/5 focus:outline-primary"
+              [class.input-error]="loginForm.get('senha')?.invalid && (loginForm.get('senha')?.dirty || loginForm.get('senha')?.touched)"
             />
+            @if (loginForm.get('senha')?.invalid && (loginForm.get('senha')?.dirty || loginForm.get('senha')?.touched)) {
+              <span class="text-red-500 text-xs mt-1 text-left">
+                @if (loginForm.get('senha')?.hasError('required')) {
+                  Senha é obrigatória.
+                } @else if (loginForm.get('senha')?.hasError('minlength')) {
+                  A senha deve conter no mínimo 6 caracteres.
+                }
+              </span>
+            }
           </label>
 
-          <button type="submit" class="btn btn-primary btn-lg w-full font-bold shadow-xl">
+          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-lg w-full font-bold shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
             Entrar
           </button>
         </form>
