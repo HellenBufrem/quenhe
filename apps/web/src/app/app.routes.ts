@@ -6,6 +6,7 @@ import { DashboardComponent } from './features/dashboard/dashboard';
 import { RevelacaoComponent } from './features/revelacao/revelacao';
 import { PanelLayoutComponent } from './shared/components/layout/panel-layout';
 import { authGuard } from './core/guards/auth.guard';
+import { grupoResolver } from './core/resolvers/grupo.resolver';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,7 @@ export const routes: Routes = [
       {
         path: 'dashboard/:codigo',
         component: DashboardComponent,
+        resolve: { grupo: grupoResolver },
       },
       {
         path: 'revelacao',

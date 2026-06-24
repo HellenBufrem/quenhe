@@ -1,6 +1,9 @@
 {
-  "name": "web",
-  "short_name": "web",
+  "name": "Quenhé - Amigo Secreto",
+  "short_name": "Quenhé",
+  "description": "O organizador moderno de amigo secreto com sorteio inteligente na nuvem.",
+  "theme_color": "#b61722",
+  "background_color": "#f8f9fa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

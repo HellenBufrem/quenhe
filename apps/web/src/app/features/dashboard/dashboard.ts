@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { AmigoSecretoService, Participante } from '../../core/services/amigo-secreto.service';
+import { AmigoSecretoService, Participante, Grupo } from '../../core/services/amigo-secreto.service';
 import { ParticipanteCardComponent } from '../../shared/components/participante-card/participante-card';
 
 @Component({
@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
 
   codigo = input<string>();
+  grupo = input<Grupo>();
 
   nomeGrupo = signal<string>('Carregando...');
   grupoStatus = signal<'pending' | 'completed'>('pending');
@@ -53,10 +54,16 @@ export class DashboardComponent implements OnInit {
       if (!groupId) return;
 
       try {
-        // 1. Carrega os dados do grupo
-        const grupo = await this.amigoSecretoService.obterGrupo(groupId);
-        this.nomeGrupo.set(grupo.name);
-        this.grupoStatus.set(grupo.status);
+        // 1. Carrega os dados do grupo pré-carregados pelo resolver
+        const grupoPreCarregado = this.grupo();
+        if (grupoPreCarregado) {
+          this.nomeGrupo.set(grupoPreCarregado.name);
+          this.grupoStatus.set(grupoPreCarregado.status);
+        } else {
+          const grupo = await this.amigoSecretoService.obterGrupo(groupId);
+          this.nomeGrupo.set(grupo.name);
+          this.grupoStatus.set(grupo.status);
+        }
 
         // 2. Carrega participantes deste grupo específico
         const data = await this.amigoSecretoService.carregarParticipantesDoGrupo(groupId);
@@ -91,6 +98,25 @@ export class DashboardComponent implements OnInit {
       );
     } catch (error) {
       console.error('Erro ao atualizar status do participante:', error);
+    }
+  }
+
+  async lidarComRemocao(id: string) {
+    if (this.grupoStatus() === 'completed') {
+      alert('O sorteio já foi concluído neste grupo.');
+      return;
+    }
+
+    if (!confirm('Deseja realmente remover este participante?')) {
+      return;
+    }
+
+    try {
+      await this.amigoSecretoService.removerParticipante(id);
+      this.participantesList.update((list) => list.filter((p) => p.id !== id));
+    } catch (error) {
+      console.error('Erro ao remover participante:', error);
+      alert('Falha ao remover o participante.');
     }
   }
 

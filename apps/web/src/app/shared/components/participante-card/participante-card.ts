@@ -11,8 +11,14 @@ import { Participante } from '../../../core/services/amigo-secreto.service';
 export class ParticipanteCardComponent {
   dados = input.required<Participante>();
   notificar = output<string>();
+  remover = output<string>();
 
   emitirNotificacao() {
     this.notificar.emit(this.dados().id || '');
+  }
+
+  emitirRemocao(event: Event) {
+    event.stopPropagation();
+    this.remover.emit(this.dados().id || '');
   }
 }

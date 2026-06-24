@@ -44,7 +44,7 @@
     <div class="space-y-4">
       @defer (on viewport) {
         @for (p of participantesList(); track p.email) {
-          <app-participante-card [dados]="p" (notificar)="lidarComNotificacao($event)" />
+          <app-participante-card [dados]="p" (notificar)="lidarComNotificacao($event)" (remover)="lidarComRemocao($event)" />
         }
       } @placeholder {
         <!-- Elegant Skeleton Loading mimicking participant cards -->

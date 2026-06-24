@@ -30,53 +30,53 @@ Todo o planejamento arquitetural e de requisitos do projeto foi documentado ao l
 ### RA1 - Design e Experiência do Usuário (UI/UX) com IA
 - [x] **ID1:** Desenvolver protótipos navegáveis (ex: gerados via Stitch e refinados no Figma) que demonstram compreensão das diretrizes de usabilidade, com link público disponibilizado no repositório.
 - [x] **ID2:** Projetar interfaces responsivas com a abordagem Mobile-First, garantindo que o layout se adapte perfeitamente a diferentes resoluções.
-- [ ] **ID3:** Projetar a experiência de aplicativo nativo (PWA), configurando o `manifest.webmanifest`.
+- [x] **ID3:** Projetar a experiência de aplicativo nativo (PWA), configurando o `manifest.webmanifest`.
 
 ### RA2 - Componentização e UI Declarativa Moderna
 - [x] **ID4:** Desenvolver componentes utilizando estritamente a arquitetura Standalone (sem o uso de NgModules).
 - [x] **ID5:** Incorporar e customizar componentes utilizando um Framework CSS moderno (Tailwind CSS + DaisyUI).
-- [ ] **ID6:** Aplicar a nova sintaxe de fluxo de controle (`@if` / `@switch`).
-- [ ] **ID7:** Utilizar a nova sintaxe de fluxo de controle `@for` com a propriedade `track`.
-- [ ] **ID8:** Aplicar Pipes (nativos ou customizados).
-- [ ] **ID9:** Implementar Deferrable Views (`@defer`).
+- [x] **ID6:** Aplicar a nova sintaxe de fluxo de controle (`@if` / `@switch`).
+- [x] **ID7:** Utilizar a nova sintaxe de fluxo de controle `@for` com a propriedade `track`.
+- [x] **ID8:** Aplicar Pipes (nativos ou customizados).
+- [x] **ID9:** Implementar Deferrable Views (`@defer`).
 
 ### RA3 - Reatividade e Gerenciamento de Estado (Signals)
-- [ ] **ID10:** Aplicar técnicas de one-way data binding utilizando estritamente Signals.
-- [ ] **ID11:** Aplicar técnicas de event binding `( )`.
-- [ ] **ID12:** Aplicar técnicas de two-way data binding utilizando a função moderna `model()`.
-- [ ] **ID13:** Utilizar efeitos (`effect()`) para manipulação de efeitos colaterais.
+- [x] **ID10:** Aplicar técnicas de one-way data binding utilizando estritamente Signals.
+- [x] **ID11:** Aplicar técnicas de event binding `( )`.
+- [x] **ID12:** Aplicar técnicas de two-way data binding utilizando a função moderna `model()`.
+- [x] **ID13:** Utilizar efeitos (`effect()`) para manipulação de efeitos colaterais.
 
 ### RA4 - Arquitetura de Software e Injeção de Dependências
-- [ ] **ID14:** Utilizar as funções modernas `input()` e `output()` para a comunicação entre componentes.
-- [ ] **ID15:** Criar comunicação entre componentes extraindo a lógica para Services, utilizando a função `inject()`.
+- [x] **ID14:** Utilizar as funções modernas `input()` e `output()` para a comunicação entre componentes.
+- [x] **ID15:** Criar comunicação entre componentes extraindo a lógica para Services, utilizando a função `inject()`.
 
 ### RA5 - Roteamento e Navegação SPA
-- [ ] **ID16:** Configurar rotas dinâmicas utilizando a API funcional moderna.
-- [ ] **ID17:** Passar e consumir dados entre telas usando `@Input()`.
-- [ ] **ID18:** Criar uma estrutura de navegação aninhada (rotas filhas).
-- [ ] **ID19:** Aplicar Functional Route Guards e Resolvers.
+- [x] **ID16:** Configurar rotas dinâmicas utilizando a API funcional moderna.
+- [x] **ID17:** Passar e consumir dados entre telas usando `@Input()`.
+- [x] **ID18:** Criar uma estrutura de navegação aninhada (rotas filhas).
+- [x] **ID19:** Aplicar Functional Route Guards e Resolvers.
 
 ### RA6 - Integração de APIs e Assincronismo (BaaS)
-- [ ] **ID20:** Realizar requisições assíncronas (GET) a uma API pública.
-- [ ] **ID21:** Implementar o fluxo de Autenticação e Gerenciamento de Sessão (JWT) via Supabase.
-- [ ] **ID22:** Realizar o ciclo completo de operações CRUD conectando a um BaaS.
-- [ ] **ID23:** Implementar Functional Interceptors.
-- [ ] **ID24:** Aplicar validações em Formulários Reativos.
-- [ ] **ID25:** Integrar RxJS com Signals (`toSignal` / `toObservable`).
+- [x] **ID20:** Realizar requisições assíncronas (GET) a uma API pública.
+- [x] **ID21:** Implementar o fluxo de Autenticação e Gerenciamento de Sessão (JWT) via Supabase.
+- [x] **ID22:** Realizar o ciclo completo de operações CRUD conectando a um BaaS.
+- [x] **ID23:** Implementar Functional Interceptors.
+- [x] **ID24:** Aplicar validações em Formulários Reativos.
+- [x] **ID25:** Integrar RxJS com Signals (`toSignal` / `toObservable`).
 
 ### RA7 - Engenharia de Software, Versionamento e DevOps
 - [x] **ID26:** Criar e gerenciar um repositório no GitHub utilizando a estrutura ágil do Gitflow (branches `main` e `develop`).
-- [ ] **ID27:** Colaborar ativamente realizando integrações via Pull Requests.
-- [ ] **ID28:** Planejar, executar o build moderno e realizar o deploy automatizado.
+- [x] **ID27:** Colaborar ativamente realizando integrações via Pull Requests.
+- [x] **ID28:** Planejar, executar o build moderno e realizar o deploy automatizado.
 
 ### RA8 - Engenharia de Software Assistida por IA
 - [x] **ID29:** Utilizar IA Generativa para a ideação e redação de User Stories. Cadastrar no Kanban no GitHub Projects.
 - [x] **ID30:** Apoiar-se na IA para estruturar o Documento de Requisitos do Produto (`prd.md`).
 - [x] **ID31:** A partir do PRD, instruir a IA a gerar um documento de especificação rigoroso (`sdd.md`).
 - [x] **ID32:** Configurar a IDE ativando Servidores MCP e utilizando Skills de Angular 20+.
-- [ ] **ID33:** Validação e Testes (TDD): Orientar o agente a gerar testes unitários (`.spec.ts`).
+- [x] **ID33:** Validação e Testes (TDD): Orientar o agente a gerar testes unitários (`.spec.ts`).
 
 </details>
 
 ---
-*Status atual: Fase de prototipagem e mapeamento de arquitetura concluídos. Aguardando início do desenvolvimento dos componentes em Angular.*
+*Status atual: Desenvolvimento finalizado com 100% de conformidade com todos os critérios avaliativos da disciplina. Aplicação homologada e pronta para deploy em produção.*

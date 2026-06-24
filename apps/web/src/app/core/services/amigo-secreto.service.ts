@@ -210,6 +210,17 @@ export class AmigoSecretoService {
     };
   }
 
+  async removerParticipante(id: string): Promise<void> {
+    const { error } = await this.supabase
+      .from('participants')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      throw new Error(`Erro ao remover participante: ${error.message}`);
+    }
+  }
+
   // --- SORTEIO (DRAW) ---
   async realizarSorteio(groupId: string, participantes: Participante[]): Promise<void> {
     if (participantes.length < 3) {
