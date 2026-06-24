@@ -74,7 +74,7 @@
               type="text"
             />
             @if (cadastroForm.get('nome')?.invalid && (cadastroForm.get('nome')?.dirty || cadastroForm.get('nome')?.touched)) {
-              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+              <span class="text-red-500 text-sm mt-1 block px-1 text-left font-medium">
                 @if (cadastroForm.get('nome')?.hasError('required')) {
                   Nome é obrigatório.
                 } @else if (cadastroForm.get('nome')?.hasError('minlength')) {
@@ -99,7 +99,7 @@
               type="email"
             />
             @if (cadastroForm.get('email')?.invalid && (cadastroForm.get('email')?.dirty || cadastroForm.get('email')?.touched)) {
-              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+              <span class="text-red-500 text-sm mt-1 block px-1 text-left font-medium">
                 @if (cadastroForm.get('email')?.hasError('required')) {
                   E-mail é obrigatório.
                 } @else if (cadastroForm.get('email')?.hasError('email')) {
@@ -124,7 +124,7 @@
               type="password"
             />
             @if (cadastroForm.get('senha')?.invalid && (cadastroForm.get('senha')?.dirty || cadastroForm.get('senha')?.touched)) {
-              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+              <span class="text-red-500 text-sm mt-1 block px-1 text-left font-medium">
                 @if (cadastroForm.get('senha')?.hasError('required')) {
                   Senha é obrigatória.
                 } @else if (cadastroForm.get('senha')?.hasError('minlength')) {
@@ -149,7 +149,7 @@
               type="password"
             />
             @if (cadastroForm.get('confirmarSenha')?.invalid && (cadastroForm.get('confirmarSenha')?.dirty || cadastroForm.get('confirmarSenha')?.touched)) {
-              <span class="text-red-500 text-xs mt-1 block px-1 text-left">
+              <span class="text-red-500 text-sm mt-1 block px-1 text-left font-medium">
                 @if (cadastroForm.get('confirmarSenha')?.hasError('required')) {
                   Confirmação de senha é obrigatória.
                 } @else if (cadastroForm.get('confirmarSenha')?.hasError('mismatch')) {
