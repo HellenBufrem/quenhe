@@ -1,0 +1,98 @@
+<div
+  class="bg-base-200 text-base-content min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden"
+>
+  <div class="absolute -top-24 -right-24 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+
+  <main class="w-full max-w-md z-10">
+    <div
+      class="card bg-base-100 rounded-[1.5rem_0.75rem_1.5rem_0.75rem] border border-base-300 p-8 md:p-12 shadow-lg"
+    >
+      <div class="flex flex-col items-center text-center">
+        <div class="mb-8 relative">
+          <div
+            class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-primary-content shadow-lg rotate-3"
+          >
+            <span class="text-3xl">🎁</span>
+          </div>
+        </div>
+
+        <header class="mb-10">
+          <h1 class="text-3xl font-extrabold tracking-tight mb-2">Amigo Secreto</h1>
+          <p class="text-base-content/60 text-sm font-medium tracking-wide">
+            A magia da troca de presentes começa aqui.
+          </p>
+        </header>
+
+        <form class="w-full space-y-6" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <!-- E-mail Group -->
+          <div class="flex flex-col w-full">
+            <label class="label py-0 mb-1">
+              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60"
+                >E-mail</span
+              >
+            </label>
+            <input
+              formControlName="email"
+              type="email"
+              placeholder="seu@email.com"
+              class="input input-bordered w-full bg-secondary/5 focus:outline-primary"
+              [class.input-error]="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
+            />
+            @if (loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)) {
+              <span class="text-red-500 text-sm mt-1 block text-left font-medium">
+                @if (loginForm.get('email')?.hasError('required')) {
+                  E-mail é obrigatório.
+                } @else if (loginForm.get('email')?.hasError('email')) {
+                  E-mail inválido.
+                }
+              </span>
+            }
+          </div>
+
+          <!-- Senha Group -->
+          <div class="flex flex-col w-full">
+            <label class="label py-0 mb-1">
+              <span class="label-text text-[11px] font-bold uppercase tracking-wider opacity-60"
+                >Senha</span
+              >
+            </label>
+            <input
+              formControlName="senha"
+              type="password"
+              placeholder="••••••••"
+              class="input input-bordered w-full bg-secondary/5 focus:outline-primary"
+              [class.input-error]="loginForm.get('senha')?.invalid && (loginForm.get('senha')?.dirty || loginForm.get('senha')?.touched)"
+            />
+            @if (loginForm.get('senha')?.invalid && (loginForm.get('senha')?.dirty || loginForm.get('senha')?.touched)) {
+              <span class="text-red-500 text-sm mt-1 block text-left font-medium">
+                @if (loginForm.get('senha')?.hasError('required')) {
+                  Senha é obrigatória.
+                } @else if (loginForm.get('senha')?.hasError('minlength')) {
+                  A senha deve conter no mínimo 6 caracteres.
+                }
+              </span>
+            }
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-lg w-full font-bold shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+              Entrar
+            </button>
+          </div>
+        </form>
+
+        <div class="mt-10 pt-8 w-full border-t border-base-300">
+          <p class="text-sm text-base-content/60 mb-2">Ainda não tem uma conta?</p>
+          <a class="link link-secondary font-bold" routerLink="/cadastro">Cadastre-se agora</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-8 text-center">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-base-content/40">
+        Quenhé • O Anfitrião Moderno
+      </p>
+    </footer>
+  </main>
+</div>

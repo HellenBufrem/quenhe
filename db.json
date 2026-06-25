@@ -1,0 +1,33 @@
+{
+  "participantes": [
+    {
+      "id": "1",
+      "nome": "Ana Paula",
+      "email": "ana.paula@work.com",
+      "status": "Pronto",
+      "avatarUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDS7CzfVJ5eYmyw9sVaWtnkmBBVrkKy2U46DNv0rUh9QWRlNI4xD-L4wRLgvyVUeF43h6bhIBQ3sN6wPiYtjlINRjfddm-Yk04ZK90woA0dPY6ZJiYQ8ll4RSNo5Wf8UYYMVaKRdEX_gpPvj5slU_PviBD1D2EmmTK4KP3xMMBFahgFr3kj-gaZvasdhgLOGdHSeYdHh6fG7hl1cgle4JpZTQf3oQZEw0jk3q1vXgSU1ht3tOQmVNH5oGIED8VVHLP-BevP5vLabmpN"
+    },
+    {
+      "id": "2",
+      "nome": "Carlos Eduardo",
+      "email": "carlos.ed@work.com",
+      "status": "Pronto",
+      "avatarUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCUP0XBbVMZ4SwicQ9ood8SkQO6JYC8NEcip1Dy3uUAPVKhH9Z8AK_FsZjgWJoEdChpWNOtH0HwcwfhHz6Q2dKs_fngSpwgjSCKAjN1fkRbAgYp721FQ6Unb6fsxeEh0_sS27RFYBh1NW2m4_NrxtVJXANhIRbRRj6NqvGUDDkGTBwulj-kUq9UxTmNho8X5BNMxH-D9nerddPmyF5O1FAQWzH1cUBt9oFWgB5ox_OlUyKaI5-Y8_ihFobsnhjui59CnrrLXT-cJqqk"
+    },
+    {
+      "id": "3",
+      "nome": "Mariana Silva",
+      "email": "mari.silva@work.com",
+      "status": "Pronto",
+      "avatarUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuB2MSgGZlJI84xsCFHfe0uoPDj1f0v2ZnE87YhNNNZW7Z5VczgCJB24rPvEZ7nTymB94SnNhv57uI4lxxjwAp1ANjICjl_Idg2m_rnQFfoJUCju5WHzjIZbGULQRiTlouCDLRdUIXMCIas9L8dojc0_z75a4AmwuwrjQzeAjzAoAO82W_eIpFHMBHPWwylrxxxJ_HVCdWAF-kVLWMZkyOjhSHKm2eEo8cRS0lLe4hnZksS2tXlK-1DvaulmWKHTrSyBNyUSyPn93wQl"
+    },
+    {
+      "id": "4",
+      "nome": "Ricardo Gomes",
+      "email": "ricardo.g@work.com",
+      "status": "Pronto",
+      "avatarUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuDc5EGT0j_1uVj_dRTPUQAIFRrI5i_hbBzDRZLbXG_U7AFMGXJVcJ6LCOsGaQN4Ylxl4L1PA-mWcaHmiTytNm0aAjqC9EiB_yRnUBGEtJgOrq-EATdYXSTjWUUBiv3IDa2kQXy4yXhQLRGoZwnKKSgjw1GgUpmKfFW-A1b0E7WFqcQCDiPITDHYOqcBUeS9Ug-sEZoovqXPVHrQ1IF5epnauxveqOwq5PLHjkd9Zvk7WDDE9TbErNhG19CpjqscPRbhxDD8-wGwAfUY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,26 @@
+<input [id]="drawerId" type="checkbox" class="drawer-toggle" />
+
+<div class="drawer-side z-40">
+  <label [attr.for]="drawerId" aria-label="Fechar menu" class="drawer-overlay"></label>
+
+  <aside class="bg-base-100 text-base-content min-h-full w-80 p-4">
+    <p class="text-primary mb-6 text-xl font-bold">Quenhé</p>
+
+    <nav aria-label="Menu lateral">
+      <ul class="menu menu-lg gap-1 p-0">
+        @for (item of navItems; track item.path) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              (click)="closeDrawer()"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </aside>
+</div>

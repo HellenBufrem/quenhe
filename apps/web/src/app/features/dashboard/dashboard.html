@@ -1,0 +1,108 @@
+<main class="px-6 py-8 max-w-2xl mx-auto pb-8">
+  <!-- Hero Header Section -->
+  <section class="mb-10">
+    <div class="flex flex-col gap-1">
+      <span class="text-[11px] font-medium uppercase tracking-[0.05em] text-primary"
+        >Organizador</span
+      >
+      <h2 class="text-3xl font-extrabold tracking-tight text-on-surface">{{ nomeGrupo() }}</h2>
+    </div>
+    <!-- Invitation Code Card -->
+    <div
+      class="mt-6 p-6 rounded-xl bg-surface-container-lowest shadow-[0_8px_30px_rgb(0,0,0,0.04)] flex items-center justify-between border-l-4 border-primary"
+    >
+      <div>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-1">
+          Código de Convite
+        </p>
+        <p class="text-2xl font-mono font-bold text-on-surface tracking-widest">
+          {{ codigo() || 'XRT-998' }}
+        </p>
+      </div>
+      <button
+        class="flex items-center justify-center w-12 h-12 rounded-full bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all active:scale-90"
+      >
+        <span class="material-symbols-outlined">content_copy</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Participants Section -->
+  <section>
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-lg font-bold text-on-surface">
+        Participantes ({{ participantesList().length }})
+      </h3>
+      <button
+        class="text-primary text-sm font-semibold flex items-center gap-1 hover:opacity-80 transition-opacity"
+      >
+        <span class="material-symbols-outlined text-sm">person_add</span>
+        Convidar
+      </button>
+    </div>
+
+    <div class="space-y-4">
+      @defer (on viewport) {
+        @for (p of participantesList(); track p.email) {
+          <app-participante-card [dados]="p" (notificar)="lidarComNotificacao($event)" (remover)="lidarComRemocao($event)" />
+        }
+      } @placeholder {
+        <!-- Elegant Skeleton Loading mimicking participant cards -->
+        <div class="space-y-4">
+          @for (item of [1, 2, 3]; track item) {
+            <div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low/50 animate-pulse border border-base-200/50">
+              <div class="w-12 h-12 rounded-full bg-gray-200"></div>
+              <div class="flex-1 space-y-2">
+                <div class="h-4 bg-gray-200 rounded w-28"></div>
+                <div class="h-3 bg-gray-200 rounded w-40"></div>
+              </div>
+              <div class="h-6 bg-gray-200 rounded-full w-16"></div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Empty State Filler or Stats -->
+  <div
+    class="mt-12 p-8 rounded-[1.5rem] bg-gradient-to-br from-primary/5 to-secondary/5 border border-outline-variant/10 flex flex-col items-center text-center"
+  >
+    <span
+      class="material-symbols-outlined text-4xl text-primary mb-4"
+      style="font-variation-settings: 'FILL' 1"
+      >celebration</span
+    >
+    <h4 class="text-lg font-bold text-on-surface mb-2">Tudo quase pronto!</h4>
+    <p class="text-sm text-on-surface-variant max-w-xs">
+      Assim que todos confirmarem, você poderá realizar o sorteio e revelar os amigos secretos.
+    </p>
+  </div>
+
+  <!-- Bottom Action Area -->
+  <div class="mt-8 space-y-3">
+    @if (grupoStatus() === 'completed') {
+      <button
+        (click)="irParaRevelacao()"
+        class="w-full bg-primary hover:bg-primary/90 text-on-primary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(206,43,43,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
+      >
+        <span class="material-symbols-outlined">visibility</span>
+        Ver Meu Amigo Secreto
+      </button>
+    } @else {
+      @if (!sorteioDisponivel()) {
+        <p class="text-xs text-center text-error font-medium">
+          ⚠️ O sorteio requer pelo menos 3 participantes e todos com o status "Pronto".
+        </p>
+      }
+      <button
+        (click)="iniciarSorteio()"
+        [disabled]="!sorteioDisponivel()"
+        class="w-full bg-secondary hover:bg-secondary/90 disabled:opacity-50 disabled:cursor-not-allowed text-on-secondary py-5 px-8 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(0,108,73,0.3)] transition-all active:scale-95 flex items-center justify-center gap-3"
+      >
+        <span class="material-symbols-outlined">shuffle</span>
+        Realizar Sorteio
+      </button>
+    }
+  </div>
+</main>

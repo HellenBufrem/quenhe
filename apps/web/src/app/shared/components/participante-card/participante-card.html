@@ -1,0 +1,32 @@
+<div
+  (click)="emitirNotificacao()"
+  class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low transition-colors hover:bg-surface-container cursor-pointer"
+>
+  <img
+    [alt]="dados().nome"
+    class="w-12 h-12 rounded-full bg-surface-container-highest"
+    [src]="dados().avatarUrl"
+  />
+  <div class="flex-1">
+    <p class="font-bold text-on-surface">{{ dados().nome | uppercase }}</p>
+    <p class="text-xs text-on-surface-variant">{{ dados().email }}</p>
+  </div>
+  @if (dados().status === 'Pronto') {
+    <span
+      class="text-xs font-medium text-secondary bg-secondary-container/20 px-2 py-1 rounded-full uppercase tracking-tighter mr-2"
+      >Pronto</span
+    >
+  } @else {
+    <span
+      class="text-xs font-medium text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded-full uppercase tracking-tighter mr-2"
+      >Pendente</span
+    >
+  }
+  <button
+    (click)="emitirRemocao($event)"
+    class="btn btn-ghost btn-xs btn-circle text-error hover:bg-error/10 flex items-center justify-center z-10"
+    title="Remover participante"
+  >
+    <span class="material-symbols-outlined text-base">delete</span>
+  </button>
+</div>
