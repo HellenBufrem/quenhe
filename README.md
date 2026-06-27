@@ -1,5 +1,12 @@
 # 🎁 Quenhé - Amigo Secreto
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Angular-21%2B-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular" />
+  <img src="https://img.shields.io/badge/Supabase-BaaS-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/DaisyUI-v5-5A0E25?style=for-the-badge&logo=daisyui&logoColor=white" alt="DaisyUI" />
+</p>
+
 Um aplicativo web moderno para organização de sorteios de Amigo Secreto de forma elegante, rápida e segura. Projeto desenvolvido com foco em componentização e regras de negócio de autenticação.
 
 ## 1. Autores
